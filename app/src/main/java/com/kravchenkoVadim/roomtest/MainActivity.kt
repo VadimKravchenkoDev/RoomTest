@@ -8,8 +8,16 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val db = MainDb.getDb(this)
+        binding.button.setOnClickListener {
+            val item = Item(
+                null, binding.edName.text.toString(),
+                binding.edPrise.text.toString()
+            )
+            db.getDao().insertItem(item)
 
+        }
     }
 }
