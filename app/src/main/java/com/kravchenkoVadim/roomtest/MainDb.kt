@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database ()
+@Database (entities = [Item::class], version = 1)
 abstract class MainDb:RoomDatabase() {
     companion object{
         fun getDb(context: Context): MainDb{
