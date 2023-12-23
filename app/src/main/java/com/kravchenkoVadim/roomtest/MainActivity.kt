@@ -13,11 +13,13 @@ class MainActivity : AppCompatActivity() {
         val db = MainDb.getDb(this)
         binding.button.setOnClickListener {
             val item = Item(
-                null, binding.edName.text.toString(),
+                null,
+                binding.edName.text.toString(),
                 binding.edPrise.text.toString()
             )
-            db.getDao().insertItem(item)
-
+            Thread {
+                db.getDao().insertItem(item)
+            }.start()
         }
     }
 }
